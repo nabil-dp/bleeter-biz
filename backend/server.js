@@ -11,6 +11,8 @@ const PORT = process.env.PORT || 5000;
 
 console.log(process.env.MONGO_URI);
 
+app.use(express.json()); // buat parse req.body
+
 app.use("/api/auth",authRoutes)
 
 app.listen(PORT, () => {
