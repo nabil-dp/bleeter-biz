@@ -59,7 +59,7 @@ export const signup = async (req, res) => {
 		console.log("Error in signup controller", error.message);
 		res.status(500).json({ error: "Internal Server Error" });
     }
-}
+};
 
 export const login = async (req, res) => {
     try {
@@ -88,10 +88,24 @@ export const login = async (req, res) => {
         console.log("Error in login controller", error.message);
 		res.status(500).json({ error: "Internal Server Error" });
     }
-}
+};
 
 export const logout = async (req, res) => {
-    res.json({
-        data: "You hit the logout endpoint",
-    });
-}
+    try {
+        res.cookie("jwt","",{maxAge:0})
+        res.status(200).json({message:"Log out successful"})
+    } catch (error) {
+        console.log("Error in logout controller", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+};
+
+export const authCheck = async (req, res) => {
+	try {
+		const user = await User.findById(req.user._id).select("-password");
+		res.status(200).json(user);
+	} catch (error) {
+		console.log("Error in getMe controller", error.message);
+		res.status(500).json({ error: "Internal Server Error" });
+	}
+};
