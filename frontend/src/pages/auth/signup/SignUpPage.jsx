@@ -65,9 +65,9 @@ export const SignUpPage = () => {
 								type='text'
 								className='grow'
 								placeholder='Full Name'
-								name='fullName'
+								name='fullname'
 								onChange={handleInputChange}
-								value={formData.fullName}
+								value={formData.fullname}
 							/>
 						</label>
 					</div>
