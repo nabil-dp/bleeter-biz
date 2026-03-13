@@ -12,7 +12,7 @@ export const SignUpPage = () => {
 	const [formData, setFormData] = useState({
 		email: "",
 		username: "",
-		fullName: "",
+		fullname: "",
 		password: "",
 	});
 
