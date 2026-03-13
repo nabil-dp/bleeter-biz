@@ -23,7 +23,7 @@ const PORT = process.env.PORT || 5000;
 
 console.log(process.env.MONGO_URI);
 
-app.use(express.json()); // buat parse req.body
+app.use(express.json({limit:"5mb"})); // buat parse req.body
 app.use(express.urlencoded({extended: true})); // buat parse data form
 
 
