@@ -11,4 +11,5 @@ export const generateTokenAndSetCookie = (userId, res) => {
         sameSite: "strict", //menjaga dari cross-site request forgery attack 
         secure: process.env.NODE_ENV !== "development",
     })
+    return token;
 }

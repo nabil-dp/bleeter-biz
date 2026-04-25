@@ -7,8 +7,9 @@ import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import postRoutes from "./routes/post.routes.js";
 import notificationRoutes from "./routes/notification.routes.js";
-
+import cors from "cors";
 import connectMongoDB from "./db/connectMongoDB.js";
+
 
 dotenv.config();
 
@@ -33,6 +34,14 @@ app.use("/api/user", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/notifications", notificationRoutes);
 
+app.use(
+	cors({
+		origin: "*", // Dalam produksi, ganti dengan domain spesifik
+		credentials: true,
+		methods: ["GET", "POST", "PUT", "DELETE"],
+		allowedHeaders: ["Content-Type", "Authorization"],
+	})
+);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
